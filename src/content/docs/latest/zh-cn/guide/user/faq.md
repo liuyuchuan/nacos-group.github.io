@@ -5,19 +5,19 @@ description: Nacos FAQ
 sidebar:
     order: 6
 ---
-
 # FAQ
 
 > 文档优化中......
 
 - Nacos常规问题
+
   - [Nacos是什么](#1.1)
   - [Nacos如何支持多环境](#1.2)
   - [Nacos是否生产可用](#1.3)
   - [Nacos有什么依赖](#1.4)
   - [Nacos使用什么开源协议](#1.5)
-
 - Nacos运维问题
+
   - [Nacos如何单机部署](#2.1)
   - [Nacos单机部署如何使用Mysql](#2.2)
   - [生产环境如何部署Nacos](#2.3)
@@ -25,35 +25,33 @@ sidebar:
   - [如何在k8s中部署Nacos](#2.5)
   - [如何监控Nacos](#2.6)
   - [Nacos在Docker环境下集群部署，无法正常启动，日志一直打印 Nacos is starting...](#2.7)
-
 - Nacos使用问题
+
   - [Zookeeper服务可以迁移到Nacos上吗](#3.1)
   - [Nacos支持多配置文件](#3.2)
   - [Nacos支持Dubbo](#3.3)
   - [Nacos支持Spring体系](#3.4)
   - [不使用Nacos SDK如何访问Nacos](#3.5)
   - [Nacos对多语言的支持](#3.6)
-  - [Nacos0.8版本登陆失败](#3.7)
-  - [服务端报错`java.lang.IllegalStateException: unable to find local peer: 127.0.0.1:8848`](#3.8)
+  - [Nacos0.8版本登录失败](#3.7)
+  - [服务端报错 `java.lang.IllegalStateException: unable to find local peer: 127.0.0.1:8848`](#3.8)
   - [Nacos如何对配置进行加密](#3.9)
   - [Nacos报401错误](#3.10)
   - [Nacos权重不生效](#3.11)
   - [Nacos如何扩缩容](#3.12)
   - [Nacos客户端修改日志级别](#3.13)
-  - [Nacos与Zipkin 整合出现`Service not found`问题](#3.14)
+  - [Nacos与Zipkin 整合出现 `Service not found`问题](#3.14)
   - [如何依赖最新的Nacos客户端？](#3.15)
   - [客户端CPU高，或者内存耗尽的问题](#3.16)
   - [日志打印频繁的问题](#3.17)
   - [集群管理页面，raft term显示不一致问题](#3.18)
-  - [找不到符号`com.alibaba.nacos.consistency.entity`](#3.19)
-  - [启动报错`the length of secret key must great than or equal 32 bytes...`](#3.20)
-  - [启动报错`The specified key byte array is x bits ...`](#3.20)
-  
-  
-
+  - [找不到符号 `com.alibaba.nacos.consistency.entity`](#3.19)
+  - [启动报错 `the length of secret key must great than or equal 32 bytes...`](#3.20)
+  - [启动报错 `The specified key byte array is x bits ...`](#3.20)
 - Nacos原理问题
 
 ## Nacos常规问题
+
 <h4 id="1.1">Nacos是什么</h4>
 
 Nacos 致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您快速实现动态服务发现、服务配置、服务元数据及流量管理。详情可以参考[Nacos官网介绍](../../what-is-nacos.md)。
@@ -75,6 +73,7 @@ Nacos在2019.1发布了Pre-GA版本，支持了安全隔离、监控和服务迁
 Nacos使用[Apache 2.0](https://github.com/alibaba/nacos/blob/master/LICENSE)。
 
 ## Nacos运维问题
+
 <h4 id="2.1">Nacos如何单机部署</h4>
 
 可以参考Nacos官网部署手册[quick start](../../quickstart/quick-start.md)。
@@ -104,6 +103,7 @@ Nacos0.8版本提供了Metrics数据暴露能力，能通过Metrics数据的内�
 原因可能是由于Docker环境下，内存不足导致另外的服务无法正常启动，最后导致服务报错，一直重启，可以通过增大Docker限制内存尝试解决。
 
 ## Nacos使用问题
+
 <h4 id="3.1">Zookeeper上的服务可以迁移到Nacos上吗</h4>
 
 可以通过Nacos-Sync把Zookeeper服务迁移到Nacos，也可以从Nacos迁移到Zookeeper，具体可以参考[Nacos Sync 使用](https://github.com/paderlol/nacos-sync-example)。
@@ -128,13 +128,13 @@ Nacos的网络交互都是基于Http协议实现的，提供了[Open-API](./open
 
 Nacos目前只支持Java，对于其他语言的支持还正在开发中，需要大家大力支持一起共建。
 
-<h4 id="3.7">Nacos0.8版本登陆失败</h4>
+<h4 id="3.7">Nacos0.8版本登录失败</h4>
 
-Nacos 0.8版本当使用openjdk并且没有`JAVA_HOME`的环境变量时，nacos可以启动成功，是因为`yum install`安装的openjdk 会把java命令注册一份到`/bin`目录下面,所以会引发`SignatureException`异常。这个问题已经修复，0.9版本会发版，具体详情可以参考[issue](https://github.com/alibaba/nacos/issues/711)。
+Nacos 0.8版本当使用openjdk并且没有 `JAVA_HOME`的环境变量时，nacos可以启动成功，是因为 `yum install`安装的openjdk 会把java命令注册一份到 `/bin`目录下面,所以会引发 `SignatureException`异常。这个问题已经修复，0.9版本会发版，具体详情可以参考[issue](https://github.com/alibaba/nacos/issues/711)。
 
 <h4 id="3.8">服务端报错 java.lang.IllegalStateException: unable to find local peer: 127.0.0.1:8848</h4>
 
-这个问题是因为Nacos获取本机IP时,没有获取到正确的外部IP.需要保证`InetAddress.getLocalHost().getHostAddress()`或者`hostname -i`的结果是与cluster.conf里配置的IP是一致的。
+这个问题是因为Nacos获取本机IP时,没有获取到正确的外部IP.需要保证 `InetAddress.getLocalHost().getHostAddress()`或者 `hostname -i`的结果是与cluster.conf里配置的IP是一致的。
 
 <h4 id="3.9">Nacos如何对配置进行加密</h4>
 
@@ -160,18 +160,16 @@ Nacos控制台上编辑权重, 目前从SpringCloud客户端和Dubbo客户端都
 
 <h4 id="3.14">Nacos与Zipkin 整合出现 Service not found 问题</h4>
 
-配置`spring-cloud-seluth`参数：`spring.zipkin.discovery-client-enabled=false`。
+配置 `spring-cloud-seluth`参数：`spring.zipkin.discovery-client-enabled=false`。
 
-如果仍然存在`Service not found`错误，则建议先使用open-api将Zipkin-server注册为永久实例服务：
+如果仍然存在 `Service not found`错误，则建议先使用open-api将Zipkin-server注册为永久实例服务：
 
 `curl -X POST 'http://127.0.0.1:8848/nacos/v1/ns/instance?port=9411&healthy=true&ip=127.0.0.1&weight=1.0&serviceName=zipkin-server&ephemeral=false&namespaceId=public'`
 
-然后，前往nacos控制台，找到服务名为`zipkin-server`的服务，找到集群配置，设置健康检查模式为`TCP`，端口号为`9411`(即zipkin-server的端口)。
-
+然后，前往nacos控制台，找到服务名为 `zipkin-server`的服务，找到集群配置，设置健康检查模式为 `TCP`，端口号为 `9411`(即zipkin-server的端口)。
 
 <h4 id="3.15">如何依赖最新的Nacos客户端？</h4>
 很多用户都是通过Spring Cloud Alibaba或者Dubbo依赖的Nacos客户端，那么Spring Cloud Alibaba和Dubbo中依赖的Nacos客户端版本，往往会落后于Nacos最新发布的版本。在一些情况下，用户需要强制将Nacos客户端升级到最新，此时却往往不知道该升级哪个依赖，这里将Spring Cloud Alibaba和Dubbo的依赖升级说明如下：
-
 
 ##### Spring Cloud Alibaba
 
@@ -194,6 +192,7 @@ Nacos控制台上编辑权重, 目前从SpringCloud客户端和Dubbo客户端都
 ```
 
 这两个jar包实际上又依赖了以下的jar包：
+
 ```xml
 <dependency>
   <groupId>com.alibaba.nacos</groupId>
@@ -225,14 +224,16 @@ Nacos控制台上编辑权重, 目前从SpringCloud客户端和Dubbo客户端都
 ```
 
 ##### Dubbo
+
 Dubbo也是类似的道理，用户通常引入的是以下的依赖：
+
 ```xml
     <dependency>
         <groupId>com.alibaba</groupId>
         <artifactId>dubbo-registry-nacos</artifactId>
         <version>[latest version]</version>
     </dependency>   
-    
+  
     <!-- Dubbo dependency -->
     <dependency>
         <groupId>com.alibaba</groupId>
@@ -242,6 +243,7 @@ Dubbo也是类似的道理，用户通常引入的是以下的依赖：
 ```
 
 需要升级Nacos客户端时，只需要如下修改依赖：
+
 ```xml
  <dependency>
   <groupId>com.alibaba.nacos</groupId>
@@ -250,10 +252,8 @@ Dubbo也是类似的道理，用户通常引入的是以下的依赖：
 </dependency>
 ```
 
-
 <h4 id="3.16">客户端CPU高，或者内存耗尽的问题</h4>
 问题的现象是依赖Nacos客户端的应用，在运行一段时间后出现CPU占用率高，内存占用高甚至内存溢出的现象，可以参考issue：[https://github.com/alibaba/nacos/issues/1605](https://github.com/alibaba/nacos/issues/1605)。这种情况首先要做的是分析CPU高或者内存占用高的原因，常用的命令有top、jstack、jmap、jhat等。其中一种情况是Nacos客户端实例在Spring Cloud Alibaba服务框架中被反复构造了多次，可以参考issue：[https://github.com/alibaba/spring-cloud-alibaba/issues/859](https://github.com/alibaba/spring-cloud-alibaba/issues/859)。这个问题已经得到了修复，预期会在下个Spring Cloud Alibaba版本中发布。
-
 
 <h4 id="3.17">日志打印频繁的问题</h4>
 在老的Nacos版本中，往往会有大量的无效日志打印，这些日志的打印会迅速占用完用户的磁盘空间，同时也让有效日志难以查找。目前社区反馈的日志频繁打印主要有以下几种情况：
@@ -275,7 +275,6 @@ curl -X PUT '$nacos_server:8848/nacos/v1/cs/ops/log?logName=config-dump&logLevel
 
 3. 客户端日志大量打印，主要有心跳日志、轮询日志等。这个问题已经在1.1.3解决，请升级到1.1.3版本。
 
-
 <h4 id="3.18">集群管理页面，raft term显示不一致问题</h4>
 在Nacos 1.0.1版本中，Nacos控制台支持了显示当前的集群各个机器的状态信息。这个功能受到比较多用户的关注，其中一个被反馈的问题是列表中每个节点的集群任期不一样。如下图所示（图片信息来自issue：https://github.com/alibaba/nacos/issues/1786）：
 
@@ -291,18 +290,18 @@ curl '127.0.0.1:8848/nacos/v1/ns/raft/state'
 
 <h4 id="3.19">找不到符号`com.alibaba.nacos.consistency.entity`</h4>
 
-这个包目录是由`protobuf`在编译时自动生成，您可以通过`mvn compile`来自动生成他们。如果您使用的是IDEA，也可以使用IDEA的protobuf插件。
+这个包目录是由 `protobuf`在编译时自动生成，您可以通过 `mvn compile`来自动生成他们。如果您使用的是IDEA，也可以使用IDEA的protobuf插件。
 
 <h4 id="3.20">启动报错java.lang.IllegalArgumentException: the length of secret key must great than or equal 32 bytes...</h4>
 <h4 id="3.21">启动报错java.lang.IllegalArgumentException: The specified key byte array is x bits which is not secure enough for any JWT HMAC-SHA algorithm.</h4>
 
-默认鉴权插件需要密钥来生成访问token，密钥格式需要长度大于32。若`secret.key`进行BASE64解密后的长度小于32，则会在启动过程中此错误。
-您可以在`application.properties`中设置正确的`secret.key`，详情见[用户指南-权限认证](./auth.md).
+默认鉴权插件需要密钥来生成访问token，密钥格式需要长度大于32。若 `secret.key`进行BASE64解密后的长度小于32，则会在启动过程中此错误。
+您可以在 `application.properties`中设置正确的 `secret.key`，详情见[用户指南-权限认证](./auth.md).
 
 <h4 id="3.22">启动报错Empty identity, Please set `nacos.core.auth.server.identity.key` and `nacos.core.auth.server.identity.value`</h4>
 
-2.2.1后的版本，移除了配置中间中`nacos.core.auth.server.identity.key` 和 `nacos.core.auth.server.identity.value`的默认值，并添加了启动校验。
-如果在开启鉴权但未设置`nacos.core.auth.server.identity.key` 和 `nacos.core.auth.server.identity.value`的情况下，nacos server会提示以上报错信息，并阻止启动。
+2.2.1后的版本，移除了配置中间中 `nacos.core.auth.server.identity.key` 和 `nacos.core.auth.server.identity.value`的默认值，并添加了启动校验。
+如果在开启鉴权但未设置 `nacos.core.auth.server.identity.key` 和 `nacos.core.auth.server.identity.value`的情况下，nacos server会提示以上报错信息，并阻止启动。
 可查看[用户指南-权限认证](./auth.md)文档中相关内容，进行设置后启动。
 
 ## Nacos原理问题
