@@ -19,8 +19,8 @@ sidebar:
 |-----|------|------|----|
 |nacos.core.auth.enabled|false|1.2.0 ~ latest|是否开启鉴权功能|
 |nacos.core.auth.system.type|nacos|1.2.0 ~ latest|鉴权类型|
-|nacos.core.auth.plugin.nacos.token.secret.key|SecretKey012345678901234567890123456789012345678901234567890123456789(2.2.0.1后无默认值)|2.1.0 ~ latest|默认鉴权插件用于生成用户登陆临时accessToken所使用的密钥，**使用默认值有安全风险**|
-|nacos.core.auth.plugin.nacos.token.expire.seconds|18000|2.1.0 ~ latest|用户登陆临时accessToken的过期时间|
+|nacos.core.auth.plugin.nacos.token.secret.key|SecretKey012345678901234567890123456789012345678901234567890123456789(2.2.0.1后无默认值)|2.1.0 ~ latest|默认鉴权插件用于生成用户登录临时accessToken所使用的密钥，**使用默认值有安全风险**|
+|nacos.core.auth.plugin.nacos.token.expire.seconds|18000|2.1.0 ~ latest|用户登录临时accessToken的过期时间|
 |nacos.core.auth.enable.userAgentAuthWhite|false|1.4.1 ~ latest|是否使用useragent白名单，主要用于适配老版本升级，**置为true时有安全风险**|
 |nacos.core.auth.server.identity.key|serverIdentity(2.2.1后无默认值)|1.4.1 ~ latest|用于替换useragent白名单的身份识别key，**使用默认值有安全风险**|
 |nacos.core.auth.server.identity.value|security(2.2.1后无默认值)|1.4.1 ~ latest|用于替换useragent白名单的身份识别value，**使用默认值有安全风险**|
@@ -163,7 +163,7 @@ try {
 待补充
 
 ### Open-API鉴权
-首先需要使用用户名和密码登陆nacos。
+首先需要使用用户名和密码登录nacos。
 
 ```plain
 curl -X POST '127.0.0.1:8848/nacos/v1/auth/login' -d 'username=nacos&password=nacos'
